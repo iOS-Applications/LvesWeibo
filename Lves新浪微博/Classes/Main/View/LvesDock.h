@@ -1,0 +1,20 @@
+//
+//  LvesDock.h
+//  Lves新浪微博
+//
+//  Created by wildcat on 14-6-22.
+//  Copyright (c) 2014年 com.wildcat. All rights reserved.
+//  底部的工具条 选项卡条
+
+#import <UIKit/UIKit.h>
+
+@interface LvesDock : UIView
+/*!
+ 添加一个选项卡
+ @param 图片名 标题
+ @return void
+ */
+-(void)addItemWithIcon:(NSString *)icon title:(NSString *)title;
+
+
+@end
