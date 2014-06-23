@@ -4,7 +4,7 @@
 //
 //  Created by wildcat on 14-6-22.
 //  Copyright (c) 2014年 com.wildcat. All rights reserved.
-// 一个选项卡按钮标签
+// 一个选项卡按钮标签  继承按钮
 
 #import <UIKit/UIKit.h>
 

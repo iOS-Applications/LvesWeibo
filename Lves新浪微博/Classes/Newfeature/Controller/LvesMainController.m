@@ -11,7 +11,7 @@
 #define kDockHeight 44
 
 
-@interface LvesMainController (){
+@interface LvesMainController ()<DockDelegate>{
     LvesDock *_dock;
 
 }
@@ -38,6 +38,10 @@
     //1.添加dock
     LvesDock *dock=[[LvesDock alloc] init];
     dock.frame=CGRectMake(0, self.view.frame.size.height-kDockHeight,self.view.frame.size.width, kDockHeight);
+    //设置代理
+    dock.delegate=self;
+    
+    
     [self.view addSubview:dock];
     //2. 往dock里填充内容
     [dock addItemWithIcon:@"tabbar_home.png" title:@"首页"];
@@ -51,11 +55,9 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 实现Dock的代理方法
+-(void)dock:(LvesDock *)dock itemSelectedFrom:(NSInteger)from to:(NSInteger)to{
+   // NSLog(@"from :%lu -> to:%lu",from,to);
 }
-
 
 @end

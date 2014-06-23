@@ -10,8 +10,17 @@
 #import "LvesDockItem.h"
 #import "NSString+Lves.h"
 
+@interface LvesDock (){
+    LvesDockItem *_selectItem;  //记录当前选中Item
+
+}
+
+@end
+
 
 @implementation LvesDock
+@synthesize delegate=_delegate;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -32,6 +41,10 @@
     [item setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     //设置选中图片
     [item setImage:[UIImage imageNamed:[icon fileAppend:@"_selected"]] forState:UIControlStateSelected];
+    ///监听Item 的点击
+    [item addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchDown];
+    
+    
     
     //2.添加Item
     [self addSubview:item];
@@ -43,13 +56,41 @@
     CGFloat width=self.frame.size.width/count;  //宽度
     for (NSUInteger i=0; i<count; i++) {
         LvesDockItem *dockItem=self.subviews[i];
+        dockItem.tag=i;
         dockItem.frame=CGRectMake(i*width, 0, width, height);
+        if (0==i) {
+//            dockItem.selected=YES;  //默认选中第一个
+//            _selectItem=dockItem;
+            [self itemClick:dockItem];
+        }
+        
     }
    
 //    [UIView commitAnimations];
     
     
 }
+#pragma mark 点击按钮
+-(void)itemClick:(LvesDockItem *)item{
+    
+    //通知代理
+    if ([_delegate respondsToSelector:@selector(dock:itemSelectedFrom:to:)]) {
+        [_delegate dock:self itemSelectedFrom:_selectItem.tag to:item.tag];
+    }
+    //1.取消以前选中的
+    _selectItem.selected=NO;
+    
+    //2.选中点击item
+    item.selected=YES;
+    //3.设置当前选中
+    _selectItem=item;
+    
+   
+    
+    
+}
+
+
 
 @end
 
