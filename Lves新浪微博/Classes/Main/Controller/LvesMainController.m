@@ -47,28 +47,37 @@
     
 }
 #pragma mark- 初始化界面
-
 #pragma mark 初始化子控制器
 -(void)initChildViewControllers{
-    //3.1 主页
+    //1 主页
     LvesHomeController *home=[[LvesHomeController alloc] init];
-    [self addChildViewController:home];
-    //3.2 消息
+    
+    UINavigationController *homeNav=[[UINavigationController alloc] initWithRootViewController:home];
+    
+    [self addChildViewController:homeNav];
+    //2 消息
     UIViewController *msg=[[UIViewController alloc] init];
     msg.view.backgroundColor=[UIColor cyanColor];
-    [self addChildViewController:msg];
+    msg.title=@"消息";
+    UINavigationController *msgNav=[[UINavigationController alloc] initWithRootViewController:msg];
+    [self addChildViewController:msgNav];
     
-    //3.3 我
+    //3 我
     UIViewController *me=[[UIViewController alloc] init];
     me.view.backgroundColor=[UIColor yellowColor];
-    [self addChildViewController:me];
-    //3.4 广场
+    me.title=@"我";
+    UINavigationController *meNav=[[UINavigationController alloc] initWithRootViewController:me];
+    [self addChildViewController:meNav];
+    //4 广场
     UIViewController *square=[[UIViewController alloc] init];
     [square.view setBackgroundColor:[UIColor grayColor]];
-    [self addChildViewController:square];
-    //3.5 更多
+    square.title=@"广场";
+    UINavigationController *squareNav=[[UINavigationController alloc] initWithRootViewController:square];
+    [self addChildViewController:squareNav];
+    //5 更多
     LvesMoreController *more=[[LvesMoreController alloc] init];
-    [self addChildViewController:more];
+    UINavigationController *moreNav=[[UINavigationController alloc] initWithRootViewController:more];
+    [self addChildViewController:moreNav];
 }
 #pragma mark  初始化dock
 -(void) initDock{

@@ -27,12 +27,43 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.title=@"主页";
+    //左边的Item
+    UIButton *leftBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *leftImage=[UIImage imageNamed:@"navigationbar_compose.png"];
+    [leftBtn setBackgroundImage:leftImage forState:UIControlStateNormal];
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_compose_highlighted.png"] forState:UIControlStateHighlighted];
+    //设置尺寸
+    leftBtn.bounds=(CGRect){CGPointZero,leftImage.size};
+    //添加监听
+    [leftBtn addTarget:self action:@selector(sendStatus) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //右边的Item
+    UIButton *rightBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *rightImage=[UIImage imageNamed:@"navigationbar_pop.png"];
+    [rightBtn setBackgroundImage:rightImage forState:UIControlStateNormal];
+    [rightBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_pop_highlighted.png"] forState:UIControlStateHighlighted];
+    //设置尺寸
+    rightBtn.bounds=(CGRect){CGPointZero,rightImage.size};
+    //添加监听
+    [rightBtn addTarget:self action:@selector(popMenu) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    
 }
+#pragma mark - Item点击
+#pragma mark 点击发微博按钮
+-(void)sendStatus{
+    MyLog(@"发微博");
+}
+#pragma mark 点击弹出菜单按钮
+-(void)popMenu{
+     MyLog(@"弹出菜单");
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
