@@ -52,17 +52,19 @@
 //    [UIView beginAnimations:nil context:nil];
     //3.调整所有item的Frame
     NSUInteger count=self.subviews.count;
+    if (1==count) {
+        //            dockItem.selected=YES;  //默认选中第一个
+        //            _selectItem=dockItem;
+        [self itemClick:item];
+    }
+    
     CGFloat height=self.frame.size.height; //高度
     CGFloat width=self.frame.size.width/count;  //宽度
     for (NSUInteger i=0; i<count; i++) {
         LvesDockItem *dockItem=self.subviews[i];
         dockItem.tag=i;
         dockItem.frame=CGRectMake(i*width, 0, width, height);
-        if (0==i) {
-//            dockItem.selected=YES;  //默认选中第一个
-//            _selectItem=dockItem;
-            [self itemClick:dockItem];
-        }
+ 
         
     }
    
