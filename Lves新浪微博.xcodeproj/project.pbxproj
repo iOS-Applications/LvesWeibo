@@ -11,6 +11,8 @@
 		5E073EA01957087C00498C6E /* LvesDockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E073E9F1957087C00498C6E /* LvesDockItem.m */; };
 		5E073EA319570AC000498C6E /* NSString+Lves.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E073EA219570AC000498C6E /* NSString+Lves.m */; };
 		5E1707D51935692800C38194 /* UIImage+Addation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1707D41935692800C38194 /* UIImage+Addation.m */; };
+		5E47B49E195A62B00018FE2F /* LvesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B49D195A62B00018FE2F /* LvesNavigationController.m */; };
+		5E47B4A2195A64840018FE2F /* UIBarButtonItem+Lves.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */; };
 		5E6AF0781959459B00271694 /* LvesHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF0771959459B00271694 /* LvesHomeController.m */; };
 		5E6AF07D195945E400271694 /* LvesMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07C195945E400271694 /* LvesMoreController.m */; };
 		5E6AF08019594CD600271694 /* LvesMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07F19594CD600271694 /* LvesMainController.m */; };
@@ -262,6 +264,9 @@
 		5EBCD82219599BF60070F2AF /* toolbar_button_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBCD73619599BF60070F2AF /* toolbar_button_disable@2x.png */; };
 		5EBCD82319599BF60070F2AF /* toolbar_button_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBCD73719599BF60070F2AF /* toolbar_button_highlighted.png */; };
 		5EBCD82419599BF60070F2AF /* toolbar_button_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EBCD73819599BF60070F2AF /* toolbar_button_highlighted@2x.png */; };
+		5EEA6ADF1959AC5F00B64C64 /* LvesMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEA6ADE1959AC5F00B64C64 /* LvesMeController.m */; };
+		5EEA6AE21959AC7E00B64C64 /* LvesMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEA6AE11959AC7E00B64C64 /* LvesMessageController.m */; };
+		5EEA6AE51959AC9200B64C64 /* LvesSquareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEA6AE41959AC9200B64C64 /* LvesSquareController.m */; };
 		5EF9C18619319211007548A4 /* LvesNewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF9C18519319211007548A4 /* LvesNewFeatureController.m */; };
 /* End PBXBuildFile section */
 
@@ -285,6 +290,10 @@
 		5E1707D31935692800C38194 /* UIImage+Addation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Addation.h"; sourceTree = "<group>"; };
 		5E1707D41935692800C38194 /* UIImage+Addation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addation.m"; sourceTree = "<group>"; };
 		5E45CA3F19357034004F6A49 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		5E47B49C195A62B00018FE2F /* LvesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesNavigationController.h; sourceTree = "<group>"; };
+		5E47B49D195A62B00018FE2F /* LvesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesNavigationController.m; sourceTree = "<group>"; };
+		5E47B4A0195A64840018FE2F /* UIBarButtonItem+Lves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Lves.h"; sourceTree = "<group>"; };
+		5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Lves.m"; sourceTree = "<group>"; };
 		5E6AF0761959459B00271694 /* LvesHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesHomeController.h; sourceTree = "<group>"; };
 		5E6AF0771959459B00271694 /* LvesHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesHomeController.m; sourceTree = "<group>"; };
 		5E6AF07B195945E400271694 /* LvesMoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesMoreController.h; sourceTree = "<group>"; };
@@ -543,6 +552,12 @@
 		5EBCD73619599BF60070F2AF /* toolbar_button_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar_button_disable@2x.png"; sourceTree = "<group>"; };
 		5EBCD73719599BF60070F2AF /* toolbar_button_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_button_highlighted.png; sourceTree = "<group>"; };
 		5EBCD73819599BF60070F2AF /* toolbar_button_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar_button_highlighted@2x.png"; sourceTree = "<group>"; };
+		5EEA6ADD1959AC5F00B64C64 /* LvesMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesMeController.h; sourceTree = "<group>"; };
+		5EEA6ADE1959AC5F00B64C64 /* LvesMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesMeController.m; sourceTree = "<group>"; };
+		5EEA6AE01959AC7E00B64C64 /* LvesMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesMessageController.h; sourceTree = "<group>"; };
+		5EEA6AE11959AC7E00B64C64 /* LvesMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesMessageController.m; sourceTree = "<group>"; };
+		5EEA6AE31959AC9200B64C64 /* LvesSquareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesSquareController.h; sourceTree = "<group>"; };
+		5EEA6AE41959AC9200B64C64 /* LvesSquareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesSquareController.m; sourceTree = "<group>"; };
 		5EF9C18419319211007548A4 /* LvesNewFeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesNewFeatureController.h; sourceTree = "<group>"; };
 		5EF9C18519319211007548A4 /* LvesNewFeatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesNewFeatureController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -589,6 +604,8 @@
 				5E1707D41935692800C38194 /* UIImage+Addation.m */,
 				5E073EA119570AC000498C6E /* NSString+Lves.h */,
 				5E073EA219570AC000498C6E /* NSString+Lves.m */,
+				5E47B4A0195A64840018FE2F /* UIBarButtonItem+Lves.h */,
+				5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -699,6 +716,9 @@
 		5E8BC9A419318F1D00B0D673 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5EEA6AD71959AC4500B64C64 /* Me */,
+				5EEA6AD91959AC4500B64C64 /* Message */,
+				5EEA6ADB1959AC4500B64C64 /* Square */,
 				5E6AF079195945CC00271694 /* More */,
 				5E6AF0741959457800271694 /* Home */,
 				5E1707D2193568F300C38194 /* Category */,
@@ -733,6 +753,8 @@
 				5E8BC9A919318F1D00B0D673 /* LvesAppDelegate.m */,
 				5E8BC9AA19318F1D00B0D673 /* main.m */,
 				5E45CA3F19357034004F6A49 /* Common.h */,
+				5E47B49C195A62B00018FE2F /* LvesNavigationController.h */,
+				5E47B49D195A62B00018FE2F /* LvesNavigationController.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1074,6 +1096,57 @@
 				5EBCD73819599BF60070F2AF /* toolbar_button_highlighted@2x.png */,
 			);
 			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		5EEA6AD71959AC4500B64C64 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				5EEA6AD81959AC4500B64C64 /* Controllers */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		5EEA6AD81959AC4500B64C64 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EEA6ADD1959AC5F00B64C64 /* LvesMeController.h */,
+				5EEA6ADE1959AC5F00B64C64 /* LvesMeController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5EEA6AD91959AC4500B64C64 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				5EEA6ADA1959AC4500B64C64 /* Controllers */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		5EEA6ADA1959AC4500B64C64 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EEA6AE01959AC7E00B64C64 /* LvesMessageController.h */,
+				5EEA6AE11959AC7E00B64C64 /* LvesMessageController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5EEA6ADB1959AC4500B64C64 /* Square */ = {
+			isa = PBXGroup;
+			children = (
+				5EEA6ADC1959AC4500B64C64 /* Controllers */,
+			);
+			path = Square;
+			sourceTree = "<group>";
+		};
+		5EEA6ADC1959AC4500B64C64 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EEA6AE31959AC9200B64C64 /* LvesSquareController.h */,
+				5EEA6AE41959AC9200B64C64 /* LvesSquareController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5EF9C182193191DE007548A4 /* Main */ = {
@@ -1429,11 +1502,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E6AF0781959459B00271694 /* LvesHomeController.m in Sources */,
+				5E47B49E195A62B00018FE2F /* LvesNavigationController.m in Sources */,
+				5EEA6AE51959AC9200B64C64 /* LvesSquareController.m in Sources */,
 				5E073EA01957087C00498C6E /* LvesDockItem.m in Sources */,
 				5E8BC9AB19318F1D00B0D673 /* LvesAppDelegate.m in Sources */,
 				5EF9C18619319211007548A4 /* LvesNewFeatureController.m in Sources */,
 				5E8BC9AC19318F1D00B0D673 /* main.m in Sources */,
+				5EEA6AE21959AC7E00B64C64 /* LvesMessageController.m in Sources */,
+				5EEA6ADF1959AC5F00B64C64 /* LvesMeController.m in Sources */,
 				5E6AF07D195945E400271694 /* LvesMoreController.m in Sources */,
+				5E47B4A2195A64840018FE2F /* UIBarButtonItem+Lves.m in Sources */,
 				5E6AF08019594CD600271694 /* LvesMainController.m in Sources */,
 				5E073E581957026100498C6E /* LvesDock.m in Sources */,
 				5E1707D51935692800C38194 /* UIImage+Addation.m in Sources */,

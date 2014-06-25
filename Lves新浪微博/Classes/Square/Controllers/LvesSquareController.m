@@ -1,18 +1,18 @@
 //
-//  LvesMoreController.m
+//  LvesSquareController.m
 //  Lves新浪微博
 //
 //  Created by wildcat on 14-6-24.
 //  Copyright (c) 2014年 com.wildcat. All rights reserved.
 //
 
-#import "LvesMoreController.h"
+#import "LvesSquareController.h"
 
-@interface LvesMoreController ()
+@interface LvesSquareController ()
 
 @end
 
-@implementation LvesMoreController
+@implementation LvesSquareController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,14 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"更多";
     
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]
-                                            initWithTitle:@"设置"
-                                            style:UIBarButtonItemStyleBordered
-                                            target:self
-                                            action:nil];
-    
+    self.view.backgroundColor=[UIColor grayColor];
+    self.title=@"广场";
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,13 +41,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
     return 0;
 }
 

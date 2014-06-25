@@ -7,7 +7,7 @@
 //
 
 #import "LvesHomeController.h"
-
+#import "UIBarButtonItem+Lves.h"
 @interface LvesHomeController ()
 
 @end
@@ -28,28 +28,19 @@
     [super viewDidLoad];
     
     self.title=@"主页";
-    //左边的Item
-    UIButton *leftBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *leftImage=[UIImage imageNamed:@"navigationbar_compose.png"];
-    [leftBtn setBackgroundImage:leftImage forState:UIControlStateNormal];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_compose_highlighted.png"] forState:UIControlStateHighlighted];
-    //设置尺寸
-    leftBtn.bounds=(CGRect){CGPointZero,leftImage.size};
-    //添加监听
-    [leftBtn addTarget:self action:@selector(sendStatus) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    //1. 左边的Item
+    self.navigationItem.leftBarButtonItem=[UIBarButtonItem
+                                           itemWithIcon:@"navigationbar_compose.png"
+                                        highlightedIcon:@"navigationbar_compose_highlighted.png"
+                                                 target:self
+                                                 action:@selector(sendStatus)];
     
-    
-    //右边的Item
-    UIButton *rightBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *rightImage=[UIImage imageNamed:@"navigationbar_pop.png"];
-    [rightBtn setBackgroundImage:rightImage forState:UIControlStateNormal];
-    [rightBtn setBackgroundImage:[UIImage imageNamed:@"navigationbar_pop_highlighted.png"] forState:UIControlStateHighlighted];
-    //设置尺寸
-    rightBtn.bounds=(CGRect){CGPointZero,rightImage.size};
-    //添加监听
-    [rightBtn addTarget:self action:@selector(popMenu) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    //2. 右边的Item
+    self.navigationItem.rightBarButtonItem=[UIBarButtonItem
+                                            itemWithIcon:@"navigationbar_pop.png"
+                                         highlightedIcon:@"navigationbar_pop_highlighted.png"
+                                                  target:self
+                                                  action:@selector(popMenu)];
     
     
 }

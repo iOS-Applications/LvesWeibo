@@ -1,18 +1,18 @@
 //
-//  LvesMoreController.m
+//  LvesMessageController.m
 //  Lves新浪微博
 //
 //  Created by wildcat on 14-6-24.
 //  Copyright (c) 2014年 com.wildcat. All rights reserved.
 //
 
-#import "LvesMoreController.h"
+#import "LvesMessageController.h"
 
-@interface LvesMoreController ()
+@interface LvesMessageController ()
 
 @end
 
-@implementation LvesMoreController
+@implementation LvesMessageController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,13 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"更多";
+    
+    self.view.backgroundColor=[UIColor cyanColor];
+    self.title=@"消息";
+    //设置发消息按钮
     
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]
-                                            initWithTitle:@"设置"
+                                            initWithTitle:@"发私信"
                                             style:UIBarButtonItemStyleBordered
                                             target:self
                                             action:nil];
+    
+    
     
 }
 
@@ -52,7 +57,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return 0;
 }
 

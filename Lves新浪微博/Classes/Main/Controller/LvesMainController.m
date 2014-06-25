@@ -10,7 +10,10 @@
 #import "LvesDock.h"
 #import "LvesHomeController.h"
 #import "LvesMoreController.h"
-
+#import "LvesMessageController.h"
+#import "LvesMeController.h"
+#import "LvesSquareController.h"
+#import "LvesNavigationController.h"
 
 #define kDockHeight 44
 
@@ -52,31 +55,25 @@
     //1 主页
     LvesHomeController *home=[[LvesHomeController alloc] init];
     
-    UINavigationController *homeNav=[[UINavigationController alloc] initWithRootViewController:home];
+    LvesNavigationController *homeNav=[[LvesNavigationController alloc] initWithRootViewController:home];
     
     [self addChildViewController:homeNav];
     //2 消息
-    UIViewController *msg=[[UIViewController alloc] init];
-    msg.view.backgroundColor=[UIColor cyanColor];
-    msg.title=@"消息";
-    UINavigationController *msgNav=[[UINavigationController alloc] initWithRootViewController:msg];
+    LvesMessageController *msg=[[LvesMessageController alloc] init];
+    LvesNavigationController *msgNav=[[LvesNavigationController alloc] initWithRootViewController:msg];
     [self addChildViewController:msgNav];
     
     //3 我
-    UIViewController *me=[[UIViewController alloc] init];
-    me.view.backgroundColor=[UIColor yellowColor];
-    me.title=@"我";
-    UINavigationController *meNav=[[UINavigationController alloc] initWithRootViewController:me];
+    LvesMeController *me=[[LvesMeController alloc] init];
+    LvesNavigationController *meNav=[[LvesNavigationController alloc] initWithRootViewController:me];
     [self addChildViewController:meNav];
     //4 广场
-    UIViewController *square=[[UIViewController alloc] init];
-    [square.view setBackgroundColor:[UIColor grayColor]];
-    square.title=@"广场";
-    UINavigationController *squareNav=[[UINavigationController alloc] initWithRootViewController:square];
+    LvesSquareController *square=[[LvesSquareController alloc] init];
+    LvesNavigationController *squareNav=[[LvesNavigationController alloc] initWithRootViewController:square];
     [self addChildViewController:squareNav];
     //5 更多
     LvesMoreController *more=[[LvesMoreController alloc] init];
-    UINavigationController *moreNav=[[UINavigationController alloc] initWithRootViewController:more];
+    LvesNavigationController *moreNav=[[LvesNavigationController alloc] initWithRootViewController:more];
     [self addChildViewController:moreNav];
 }
 #pragma mark  初始化dock
