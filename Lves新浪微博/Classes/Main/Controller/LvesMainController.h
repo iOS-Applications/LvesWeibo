@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LvesMainController : UIViewController
+#import "LvesDockController.h"
+@interface LvesMainController : LvesDockController
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "LvesMainController.h"
-#import "LvesDock.h"
 #import "LvesHomeController.h"
 #import "LvesMoreController.h"
 #import "LvesMessageController.h"
@@ -15,11 +14,10 @@
 #import "LvesSquareController.h"
 #import "LvesNavigationController.h"
 
-#define kDockHeight 44
 
 
-@interface LvesMainController ()<DockDelegate>{
-   
+
+@interface LvesMainController (){
 
 }
 
@@ -41,13 +39,9 @@
     [super viewDidLoad];
     //1.初始化所有的子控制器
     [self initChildViewControllers];
-    //2.初始化dock
-    [self initDock];
-    
-    
-    
-    
-    
+    //2.添加dockItem
+    [self addDockItems];
+   
 }
 #pragma mark- 初始化界面
 #pragma mark 初始化子控制器
@@ -77,38 +71,21 @@
     [self addChildViewController:moreNav];
 }
 #pragma mark  初始化dock
--(void) initDock{
-    //1.1 创建一个Dock
-    LvesDock *dock=[[LvesDock alloc] init];
-    dock.frame=CGRectMake(0, self.view.frame.size.height-kDockHeight,self.view.frame.size.width, kDockHeight);
-    //1.2 设置代理
-    dock.delegate=self;
-    //1.3 添加dock
-    [self.view addSubview:dock];
-    //2. 往dock里填充内容
-    [dock addItemWithIcon:@"tabbar_home.png" title:@"首页"];
-    [dock addItemWithIcon:@"tabbar_message_center.png" title:@"消息"];
-    [dock addItemWithIcon:@"tabbar_profile.png" title:@"我"];
-    [dock addItemWithIcon:@"tabbar_discover.png" title:@"广场"];
-    [dock addItemWithIcon:@"tabbar_more.png" title:@"更多"];
-}
-
-
-
-#pragma mark - 实现Dock的代理方法
--(void)dock:(LvesDock *)dock itemSelectedFrom:(NSInteger)from to:(NSInteger)to{
-    if (to<0||to>=self.childViewControllers.count) return;
-    //0.移除旧的控制器
-    UIViewController *oldVc=self.childViewControllers[from];
-    [oldVc.view removeFromSuperview];
-    //1.取出即将现实的控制器
-    UIViewController *newVc=self.childViewControllers[to];
-    CGFloat width=self.view.frame.size.width;
-    CGFloat hight=self.view.frame.size.height-kDockHeight;
-    newVc.view.frame=CGRectMake(0, 0, width, hight);
-    //2.添加新的控制器view到MainViewController上边
-    [self.view addSubview:newVc.view];
+-(void) addDockItems{
     
+    //设置背景图片
+    _dock.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_background.png"]];
+    
+    //2. 往dock里填充Item
+    [_dock addItemWithIcon:@"tabbar_home.png" highlightIcon:@"tabbar_home_selected.png"  title:@"首页"];
+    [_dock addItemWithIcon:@"tabbar_message_center.png" highlightIcon:@"tabbar_message_center_selected.png" title:@"消息"];
+    [_dock addItemWithIcon:@"tabbar_profile.png" highlightIcon:@"tabbar_profile_selected.png" title:@"我"];
+    [_dock addItemWithIcon:@"tabbar_discover.png" highlightIcon:@"tabbar_discover_selected.png" title:@"广场"];
+    [_dock addItemWithIcon:@"tabbar_more.png" highlightIcon:@"tabbar_more_selected.png" title:@"更多"];
 }
+
+
+
+
 
 @end

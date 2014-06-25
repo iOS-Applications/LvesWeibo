@@ -8,7 +8,7 @@
 
 #import "LvesDockItem.h"
 #define kTitleRatio 0.3  //按钮中的标题所占高度比例
-
+#define kTabbarSliderBG @"tabbar_slider.png"
 
 @implementation LvesDockItem
 
@@ -22,7 +22,7 @@
         //2.设置图片填充
         self.imageView.contentMode=UIViewContentModeCenter;
         //3.设置选中时的背景
-        [self setBackgroundImage:[UIImage imageNamed:@"tabbar_slider.png"] forState:UIControlStateSelected];
+        [self setBackgroundImage:[UIImage imageNamed:kTabbarSliderBG] forState:UIControlStateSelected];
         
         
     }

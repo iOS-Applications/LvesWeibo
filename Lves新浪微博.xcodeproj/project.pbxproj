@@ -13,6 +13,7 @@
 		5E1707D51935692800C38194 /* UIImage+Addation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1707D41935692800C38194 /* UIImage+Addation.m */; };
 		5E47B49E195A62B00018FE2F /* LvesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B49D195A62B00018FE2F /* LvesNavigationController.m */; };
 		5E47B4A2195A64840018FE2F /* UIBarButtonItem+Lves.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */; };
+		5E47B4A5195A706F0018FE2F /* LvesDockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B4A4195A706F0018FE2F /* LvesDockController.m */; };
 		5E6AF0781959459B00271694 /* LvesHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF0771959459B00271694 /* LvesHomeController.m */; };
 		5E6AF07D195945E400271694 /* LvesMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07C195945E400271694 /* LvesMoreController.m */; };
 		5E6AF08019594CD600271694 /* LvesMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07F19594CD600271694 /* LvesMainController.m */; };
@@ -294,6 +295,8 @@
 		5E47B49D195A62B00018FE2F /* LvesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesNavigationController.m; sourceTree = "<group>"; };
 		5E47B4A0195A64840018FE2F /* UIBarButtonItem+Lves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Lves.h"; sourceTree = "<group>"; };
 		5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Lves.m"; sourceTree = "<group>"; };
+		5E47B4A3195A706F0018FE2F /* LvesDockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesDockController.h; sourceTree = "<group>"; };
+		5E47B4A4195A706F0018FE2F /* LvesDockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesDockController.m; sourceTree = "<group>"; };
 		5E6AF0761959459B00271694 /* LvesHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesHomeController.h; sourceTree = "<group>"; };
 		5E6AF0771959459B00271694 /* LvesHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesHomeController.m; sourceTree = "<group>"; };
 		5E6AF07B195945E400271694 /* LvesMoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesMoreController.h; sourceTree = "<group>"; };
@@ -593,6 +596,8 @@
 				5E073E571957026100498C6E /* LvesDock.m */,
 				5E073E9E1957087C00498C6E /* LvesDockItem.h */,
 				5E073E9F1957087C00498C6E /* LvesDockItem.m */,
+				5E47B4A3195A706F0018FE2F /* LvesDockController.h */,
+				5E47B4A4195A706F0018FE2F /* LvesDockController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1515,6 +1520,7 @@
 				5E6AF08019594CD600271694 /* LvesMainController.m in Sources */,
 				5E073E581957026100498C6E /* LvesDock.m in Sources */,
 				5E1707D51935692800C38194 /* UIImage+Addation.m in Sources */,
+				5E47B4A5195A706F0018FE2F /* LvesDockController.m in Sources */,
 				5E073EA319570AC000498C6E /* NSString+Lves.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

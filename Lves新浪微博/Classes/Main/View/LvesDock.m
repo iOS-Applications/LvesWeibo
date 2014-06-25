@@ -8,7 +8,7 @@
 
 #import "LvesDock.h"
 #import "LvesDockItem.h"
-#import "NSString+Lves.h"
+
 
 @interface LvesDock (){
     LvesDockItem *_selectItem;  //记录当前选中Item
@@ -26,12 +26,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_background.png"]];
+        
     }
     return self;
 }
 #pragma mark 添加一个选项卡
--(void)addItemWithIcon:(NSString *)icon title:(NSString *)title{
+-(void)addItemWithIcon:(NSString *)icon highlightIcon:(NSString *)hightLighted  title:(NSString *)title{
     
     //1.创建Item
     LvesDockItem *item=[[LvesDockItem alloc] init];
@@ -40,7 +40,7 @@
     //设置默认图片
     [item setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     //设置选中图片
-    [item setImage:[UIImage imageNamed:[icon fileAppend:@"_selected"]] forState:UIControlStateSelected];
+    [item setImage:[UIImage imageNamed:hightLighted] forState:UIControlStateSelected];
     ///监听Item 的点击
     [item addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchDown];
     
