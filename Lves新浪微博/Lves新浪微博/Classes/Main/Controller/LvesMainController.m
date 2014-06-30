@@ -66,7 +66,7 @@
     LvesNavigationController *squareNav=[[LvesNavigationController alloc] initWithRootViewController:square];
     [self addChildViewController:squareNav];
     //5 更多
-    LvesMoreController *more=[[LvesMoreController alloc] init];
+    LvesMoreController *more=[[LvesMoreController alloc] initWithStyle:UITableViewStyleGrouped];
     LvesNavigationController *moreNav=[[LvesNavigationController alloc] initWithRootViewController:more];
     [self addChildViewController:moreNav];
 }

@@ -11,7 +11,20 @@
 @interface UIImage (Addation)
 /*
  加载全屏图片
+ @param imgName 前缀文件名
+ @return 一个添加后缀的图片
  */
 
 +(UIImage *)fullScrennImage:(NSString *)imgName;
+
+/*
+ 拉伸图片
+ @param 需要拉伸的图片
+ @return 拉伸后的图片
+ */
+
++(UIImage *)resizeImage:(NSString *)imgName;
+
+
+
 @end

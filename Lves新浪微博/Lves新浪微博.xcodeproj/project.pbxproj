@@ -14,6 +14,7 @@
 		5E47B49E195A62B00018FE2F /* LvesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B49D195A62B00018FE2F /* LvesNavigationController.m */; };
 		5E47B4A2195A64840018FE2F /* UIBarButtonItem+Lves.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */; };
 		5E47B4A5195A706F0018FE2F /* LvesDockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B4A4195A706F0018FE2F /* LvesDockController.m */; };
+		5E50A0D21961494D00346292 /* More.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E50A0D11961494D00346292 /* More.plist */; };
 		5E6AF0781959459B00271694 /* LvesHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF0771959459B00271694 /* LvesHomeController.m */; };
 		5E6AF07D195945E400271694 /* LvesMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07C195945E400271694 /* LvesMoreController.m */; };
 		5E6AF08019594CD600271694 /* LvesMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07F19594CD600271694 /* LvesMainController.m */; };
@@ -297,6 +298,7 @@
 		5E47B4A1195A64840018FE2F /* UIBarButtonItem+Lves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Lves.m"; sourceTree = "<group>"; };
 		5E47B4A3195A706F0018FE2F /* LvesDockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesDockController.h; sourceTree = "<group>"; };
 		5E47B4A4195A706F0018FE2F /* LvesDockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesDockController.m; sourceTree = "<group>"; };
+		5E50A0D11961494D00346292 /* More.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = More.plist; sourceTree = "<group>"; };
 		5E6AF0761959459B00271694 /* LvesHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesHomeController.h; sourceTree = "<group>"; };
 		5E6AF0771959459B00271694 /* LvesHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesHomeController.m; sourceTree = "<group>"; };
 		5E6AF07B195945E400271694 /* LvesMoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesMoreController.h; sourceTree = "<group>"; };
@@ -615,6 +617,14 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		5E50A0D01961494D00346292 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5E50A0D11961494D00346292 /* More.plist */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		5E6AF0741959457800271694 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,6 +777,7 @@
 		5E8BC9AD19318F8E00B0D673 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5E50A0D01961494D00346292 /* Data */,
 				5EBCD64219599BF60070F2AF /* Image */,
 				5E8BC9AF19318F8E00B0D673 /* Music */,
 			);
@@ -1275,6 +1286,7 @@
 				5EBCD7BD19599BF60070F2AF /* navigationbar_pop.png in Resources */,
 				5EBCD76A19599BF60070F2AF /* statusdetail_comment_background_middle@2x.png in Resources */,
 				5EBCD7BF19599BF60070F2AF /* navigationbar_pop_highlighted.png in Resources */,
+				5E50A0D21961494D00346292 /* More.plist in Resources */,
 				5EBCD7A219599BF60070F2AF /* tabbar_background@2x.png in Resources */,
 				5EBCD76819599BF60070F2AF /* statusdetail_comment_background_bottom_highlighted@2x.png in Resources */,
 				5EBCD73D19599BF60070F2AF /* avatar_default_small.png in Resources */,

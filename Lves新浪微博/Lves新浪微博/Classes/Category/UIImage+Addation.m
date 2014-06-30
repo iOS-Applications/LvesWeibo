@@ -20,4 +20,11 @@
     //2.加载图片
     return [self imageNamed:imgName];
 }
+
++(UIImage *)resizeImage:(NSString *)imgName{
+    //拉伸图片
+    return  [[UIImage imageNamed:imgName] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
+
+}
+
 @end

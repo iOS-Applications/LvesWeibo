@@ -6,9 +6,34 @@
 //  Copyright (c) 2014年 com.wildcat. All rights reserved.
 //
 
-#import "LvesMoreController.h"
+#pragma mark - 注销按钮分类
+@interface LogoutBtn : UIButton
 
-@interface LvesMoreController ()
+@end
+
+@implementation LogoutBtn
+//重写imageView的位置
+-(CGRect)imageRectForContentRect:(CGRect)contentRect{
+
+    CGFloat x=10;
+    CGFloat y=0;
+    CGFloat width=contentRect.size.width-2*x;
+    CGFloat hight=contentRect.size.height;
+    
+    return CGRectMake(x, y, width, hight);
+}
+
+
+@end
+
+#pragma mark - 更多视图
+#import "LvesMoreController.h"
+#import "UIImage+Addation.h"
+
+@interface LvesMoreController (){
+    NSArray *_data;
+
+}
 
 @end
 
@@ -26,20 +51,61 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"更多";
+    //1. 加载UI
+    [self loadUI];
+    //2. 加载数据
+    [self loadPlist];
+    //3. 设置TableView的属性
+    [self initTableView];
     
+}
+#pragma mark 设置tableView
+-(void)initTableView{
+    //1. 设置背景
+    self.tableView.backgroundView=nil;
+    self.tableView.backgroundColor=[UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
+    //2. 设置TableView 的section的间距高度
+    self.tableView.sectionHeaderHeight=5.f;
+    self.tableView.sectionFooterHeight=0.f;
+    //3. 在tableView的底部添加一个注销登录按钮
+    LogoutBtn *logOutButton=[LogoutBtn buttonWithType:UIButtonTypeCustom];
+    //3.1 设置标题
+    [logOutButton setTitle:@"退出当前登录" forState:UIControlStateNormal];
+    
+    //3.2 设置背景图片
+    [logOutButton setImage:[UIImage resizeImage:@"common_button_big_red.png"] forState:UIControlStateNormal];
+    [logOutButton setImage:[UIImage resizeImage:@"common_button_big_red_highlighted.png"] forState:UIControlStateHighlighted];
+    //tableFootView的宽度不用设置
+    logOutButton.bounds=CGRectMake(0, 0, 0, 44);
+    
+    self.tableView.tableFooterView=logOutButton;
+    //4.增加底部额外的滚动区域
+    self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 10, 0);
+
+}
+
+
+#pragma mark 加载数据
+-(void)loadPlist{
+    //获得路径
+    NSURL *url=[[NSBundle mainBundle] URLForResource:@"More" withExtension:@"plist"];
+   
+    //读取数据 从plist文件
+    _data=[NSArray arrayWithContentsOfURL:url];
+
+}
+
+#pragma mark 加载UI
+
+-(void)loadUI{
+    //设置标题
+    self.title=@"更多";
+    //设置右上角设置按钮
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]
                                             initWithTitle:@"设置"
                                             style:UIBarButtonItemStyleBordered
                                             target:self
                                             action:nil];
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -47,73 +113,74 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    return 0;
+    return _data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return 0;
+    NSArray *array=_data[section];
+    return array.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section==_data.count-1) {
+        return 10.f;
+    }
+    return 0.f;
 }
 
-/*
+#pragma mark 每当有一个cell进入屏幕视野范围内
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        //设置Cell的背景图片
+        UIImageView *bg=[[UIImageView alloc] init];
+        cell.backgroundView=bg;
+        
+        UIImageView *selectBg=[[UIImageView alloc] init];
+        cell.selectedBackgroundView=selectBg;
+        
+    }
+    //1. 取出这行对应的字典数据
+    NSDictionary*dic= _data[indexPath.section][indexPath.row];
+    //2. 设置文字
+    cell.textLabel.text=dic[@"name"];
+    cell.textLabel.backgroundColor=[UIColor clearColor];  //背景色设为透明  ，清掉以前的颜色
     
-    // Configure the cell...
+    
+    //设置Cell的背景图片
+    UIImageView *bg=(UIImageView *)cell.backgroundView;
+    
+    UIImageView *selectBg=(UIImageView *)cell.selectedBackgroundView;
+    
+    //当前组的总行数
+    int count=[_data[indexPath.section] count];
+    if (1==count) {  //这组只有一行
+        bg.image=[UIImage resizeImage:@"common_card_background.png"];
+        selectBg.image=[UIImage resizeImage:@"common_card_background_highlighted.png"];
+    }else if (indexPath.row==0) {  //首行
+        bg.image=[UIImage resizeImage:@"common_card_top_background.png"];
+        selectBg.image=[UIImage resizeImage:@"common_card_top_background_highlighted.png"];
+    }else if (indexPath.row==count-1){ //最后一行
+        bg.image=[UIImage resizeImage:@"common_card_bottom_background.png"];
+        selectBg.image=[UIImage resizeImage:@"common_card_middle_background_highlighted.png"];
+    }else {
+        bg.image=[UIImage resizeImage:@"common_card_middle_background.png"];
+        
+        selectBg.image=[UIImage resizeImage:@"common_card_bottom_background@2x.png"];
+    }
+    
+
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark 设置cell选中后去除选中
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
