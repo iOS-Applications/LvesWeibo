@@ -13,10 +13,6 @@
 #import "LvesMeController.h"
 #import "LvesSquareController.h"
 #import "LvesNavigationController.h"
-
-
-
-
 @interface LvesMainController (){
 
 }

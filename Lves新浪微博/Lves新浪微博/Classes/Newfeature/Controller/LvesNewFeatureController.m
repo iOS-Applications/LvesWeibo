@@ -9,7 +9,7 @@
 #import "LvesNewFeatureController.h"
 #import "UIImage+Addation.h"
 #import "LvesMainController.h"
-
+#import "LvesOauthController.h"
 
 #define kCount 4
 
@@ -160,8 +160,8 @@
    // [UIApplication sharedApplication].keyWindow;
     //显示状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    self.view.window.rootViewController=[[LvesMainController alloc] init];
-    
+    //调到登录授权页面
+     self.view.window.rootViewController=[[LvesOauthController alloc] init];
 }
 #pragma mark share
 -(void) share:(UIButton *) btn{

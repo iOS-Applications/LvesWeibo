@@ -8,7 +8,13 @@
 
 #import "LvesHomeController.h"
 #import "UIBarButtonItem+Lves.h"
-@interface LvesHomeController ()
+#import "LvesStatusTool.h"
+#import "LvesStatus.h"
+#import "LvesUser.h"
+
+@interface LvesHomeController (){
+    NSMutableArray *_statuses;//所有微博数据
+}
 
 @end
 
@@ -28,22 +34,49 @@
     [super viewDidLoad];
     
     self.title=@"主页";
+    
+    //初始化界面
+    [self buildUI];
+    //获得微博数据
+    [self loadStatusData];
+    
+}
+
+#pragma mark - 初始化界面
+-(void)buildUI{
     //1. 左边的Item
     self.navigationItem.leftBarButtonItem=[UIBarButtonItem
                                            itemWithIcon:@"navigationbar_compose.png"
-                                        highlightedIcon:@"navigationbar_compose_highlighted.png"
-                                                 target:self
-                                                 action:@selector(sendStatus)];
+                                           highlightedIcon:@"navigationbar_compose_highlighted.png"
+                                           target:self
+                                           action:@selector(sendStatus)];
     
     //2. 右边的Item
     self.navigationItem.rightBarButtonItem=[UIBarButtonItem
                                             itemWithIcon:@"navigationbar_pop.png"
-                                         highlightedIcon:@"navigationbar_pop_highlighted.png"
-                                                  target:self
-                                                  action:@selector(popMenu)];
-    
-    
+                                            highlightedIcon:@"navigationbar_pop_highlighted.png"
+                                            target:self
+                                            action:@selector(popMenu)];
+
 }
+#pragma mark -加载微博数据
+-(void)loadStatusData{
+    _statuses=[NSMutableArray array];
+   
+    [LvesStatusTool statusWithSuccess:^(NSArray *statuses) {
+        [_statuses addObjectsFromArray:statuses]; //添加微博数据
+        [self.tableView reloadData]; //加载数据
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+
+}
+
+
+
 #pragma mark - Item点击
 #pragma mark 点击发微博按钮
 -(void)sendStatus{
@@ -64,76 +97,22 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return 0;
+    return _statuses.count;
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    LvesStatus *status=_statuses[indexPath.row];
+    cell.textLabel.text=status.text;
+    cell.detailTextLabel.text=status.user.screenName;
     return cell;
-}
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -28,7 +28,9 @@
     [super viewDidLoad];
     //1. 设置导航栏的背景图片
     UINavigationBar *bar=[UINavigationBar appearance];
-    [bar setBackgroundImage:[UIImage imageNamed:@"navigationbar_background.png"] forBarMetrics:UIBarMetricsDefault];
+    //[bar setBackgroundImage:[UIImage imageNamed:@"navigationbar_background.png"] forBarMetrics:UIBarMetricsDefault];
+    [bar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"navigationbar_background.png"]]];
+    
     //2. 设置导航栏文字的主题
     [bar setTitleTextAttributes:@{
                                   UITextAttributeTextColor:[UIColor blackColor],

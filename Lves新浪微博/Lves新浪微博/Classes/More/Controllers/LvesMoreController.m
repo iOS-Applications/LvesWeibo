@@ -29,6 +29,9 @@
 #pragma mark - 更多视图
 #import "LvesMoreController.h"
 #import "UIImage+Addation.h"
+#import "LvesGroupCell.h"
+
+
 
 @interface LvesMoreController (){
     NSArray *_data;
@@ -132,48 +135,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
+    LvesGroupCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[LvesGroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
-        //设置Cell的背景图片
-        UIImageView *bg=[[UIImageView alloc] init];
-        cell.backgroundView=bg;
-        
-        UIImageView *selectBg=[[UIImageView alloc] init];
-        cell.selectedBackgroundView=selectBg;
+       cell.myTableView=self.tableView;
         
     }
+       
+    
     //1. 取出这行对应的字典数据
     NSDictionary*dic= _data[indexPath.section][indexPath.row];
     //2. 设置文字
     cell.textLabel.text=dic[@"name"];
-    cell.textLabel.backgroundColor=[UIColor clearColor];  //背景色设为透明  ，清掉以前的颜色
+    cell.indexPath=indexPath; //设置IndexPath
     
-    
-    //设置Cell的背景图片
-    UIImageView *bg=(UIImageView *)cell.backgroundView;
-    
-    UIImageView *selectBg=(UIImageView *)cell.selectedBackgroundView;
-    
-    //当前组的总行数
-    int count=[_data[indexPath.section] count];
-    if (1==count) {  //这组只有一行
-        bg.image=[UIImage resizeImage:@"common_card_background.png"];
-        selectBg.image=[UIImage resizeImage:@"common_card_background_highlighted.png"];
-    }else if (indexPath.row==0) {  //首行
-        bg.image=[UIImage resizeImage:@"common_card_top_background.png"];
-        selectBg.image=[UIImage resizeImage:@"common_card_top_background_highlighted.png"];
-    }else if (indexPath.row==count-1){ //最后一行
-        bg.image=[UIImage resizeImage:@"common_card_bottom_background.png"];
-        selectBg.image=[UIImage resizeImage:@"common_card_middle_background_highlighted.png"];
-    }else {
-        bg.image=[UIImage resizeImage:@"common_card_middle_background.png"];
-        
-        selectBg.image=[UIImage resizeImage:@"common_card_bottom_background@2x.png"];
+    //3.设置右边显示
+    if (2==indexPath.section) {
+        cell.cellType=kCellTypeLabel; //设置文字
+        cell.rightLabel.text=indexPath.row?@"有图模式":@"经典主题"; //文字
+    }else{
+        cell.cellType=kCellTypeArrow; //设置箭头
     }
-    
-
+       
     
     return cell;
 }

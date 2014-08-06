@@ -15,3 +15,6 @@
     #import <Foundation/Foundation.h>
     #import "common.h"
 #endif
+
+
+#define kBaseURL @"https://api.weibo.com"

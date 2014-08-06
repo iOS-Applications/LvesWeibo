@@ -9,6 +9,9 @@
 #import "LvesAppDelegate.h"
 #import "LvesMainController.h"
 #import "LvesNewFeatureController.h"
+#import "LvesOauthController.h"
+#import "LvesAccountTool.h"
+
 @implementation LvesAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -22,7 +25,20 @@
     NSString *saveVersion=[[NSUserDefaults standardUserDefaults] objectForKey:key];
     if ([saveVersion isEqualToString:version]) {  //不是第一次打开
         application.statusBarHidden=NO;
-        self.window.rootViewController=[[LvesMainController alloc] init];
+        
+       LvesAccount *account= [LvesAccountTool sharedLvesAccountTool].currentAccount;
+        MyLog(@"account.accessToken%@",account.accessToken);
+        if (account) {
+            
+            //已登录调到主页面
+            self.window.rootViewController=[[LvesMainController alloc] init];
+        }else {
+            //调到登录授权页面
+            self.window.rootViewController=[[LvesOauthController alloc] init];
+        }
+        
+        
+        
     }else{   //第一次使用新版本
         
         //更新沙盒中的版本号
@@ -31,6 +47,7 @@
         self.window.rootViewController=[[LvesNewFeatureController alloc] init];
     
     }
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
