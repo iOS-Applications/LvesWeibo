@@ -7,34 +7,48 @@
 //  一个StatusCellFrame;可以描述一个StausCell的内部所有子空间的Frame;
 
 #import <Foundation/Foundation.h>
+
+#define kCellBorderWidth 10
+#define kScreenNameFont [UIFont systemFontOfSize:17]
+#define kTimeFont [UIFont systemFontOfSize:17]
+#define kSourceFont kTimeFont
+#define kTextFont [UIFont systemFontOfSize:15]
+
+#define kRetweetedTextFont [UIFont systemFontOfSize:16]
+#define kRetweetScreenNameFont [UIFont systemFontOfSize:16]
+
+
 @class LvesStatus;
 @interface LvesStatusCellFrame : NSObject
 
-//微博模型
+//微博模型Frame
 @property (nonatomic,strong) LvesStatus *status;
 
-///头像
+///Cell的高度
+@property (nonatomic,readonly) CGFloat cellHeight;
+
+///头像Frame
 @property (nonatomic,readonly) CGRect iconFrame;
 
-///昵称
+///昵称Frame
 @property (nonatomic,readonly) CGRect screenNameFrame;
-///时间
+///时间Frame
 @property (nonatomic,readonly) CGRect timeFrame;
-///来源
-@property (nonatomic,readonly) CGRect scoureFrame;
-///内容
+///来源Frame
+@property (nonatomic,readonly) CGRect sourceFrame;
+///内容Frame
 @property (nonatomic,readonly) CGRect textFrame;
-///配图
+///配图Frame
 @property (nonatomic,readonly) CGRect imageFrame;
 
 
-///被转发微博的父控件
-@property (nonatomic,readonly) CGRect reweetedFrame;
-///被转发微博作者的昵称
-@property (nonatomic,readonly) CGRect reweetedScreenNameFrame;
-///被转发微博的内容
-@property (nonatomic,readonly) CGRect reweetedTextFrame;
-///被转发微博的配图
-@property (nonatomic,readonly) CGRect reweetedImageFrame;
+///被转发微博的父控件Frame
+@property (nonatomic,readonly) CGRect retweetedFrame;
+///被转发微博作者的昵称Frame
+@property (nonatomic,readonly) CGRect retweetedScreenNameFrame;
+///被转发微博的内容Frame
+@property (nonatomic,readonly) CGRect retweetedTextFrame;
+///被转发微博的配图Frame
+@property (nonatomic,readonly) CGRect retweetedImageFrame;
 
 @end

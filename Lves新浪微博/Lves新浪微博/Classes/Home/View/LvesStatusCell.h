@@ -7,7 +7,8 @@
 //  微博cell
 
 #import <UIKit/UIKit.h>
-
+@class  LvesStatusCellFrame;
 @interface LvesStatusCell : UITableViewCell
+@property (nonatomic,strong) LvesStatusCellFrame *statusCellFrame;
 
 @end

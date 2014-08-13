@@ -19,6 +19,10 @@
 #import "LvesStatus.h"
 #import "LvesUser.h"
 #import "UIImageView+WebCache.h"
+#import "LvesStatusCellFrame.h"
+#import "LvesStatusCell.h"
+
+
 
 @interface LvesHomeController (){
     NSMutableArray *_statuses;//所有微博数据
@@ -112,32 +116,19 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
+    LvesStatusCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.textLabel.numberOfLines=0;  //设置标签为多行
-        cell.textLabel.font=[UIFont systemFontOfSize:15.f];
-        cell.detailTextLabel.font=[UIFont systemFontOfSize:12.0];
-        cell.imageView.frame=CGRectMake(5, 5, 38, 38);
+        cell = [[LvesStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
     LvesStatus *status=_statuses[indexPath.row];
     
-    //拼接转载内容
-    NSString *text=status.text;
-    //如果有转载
-    if (status.retweetedStatus) {
-        text=[text stringByAppendingFormat:@"\n%@",status.retweetedStatus.text];
-    }
+    LvesStatusCellFrame *cellFrame=[[LvesStatusCellFrame alloc] init];
+    cellFrame.status=status;
+
+    cell.statusCellFrame=cellFrame;
     
-    
-    
-    cell.textLabel.text=text;
-    cell.detailTextLabel.text=status.user.screenName;
-    //异步下载图片
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:status.user.profileImageUrl]
-                      placeholderImage:[UIImage imageNamed:@"Icon.png"]
-                               options:SDWebImageLowPriority|SDWebImageRetryFailed];  //scroolView减速时延迟加载|失败时重新下载
+   
     return cell;
 
 }
@@ -148,24 +139,10 @@
 
     //获得微博内容
     LvesStatus *status=_statuses[indexPath.row];
-    //拼接转载内容
-    NSString *text=status.text;
-    if (status.retweetedStatus) {
-        text=[text stringByAppendingFormat:@"\n*****%@",status.retweetedStatus.text];
-    }
-    //微博内容占据的空间
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:15.0f]};
-    CGRect rect = [text boundingRectWithSize:CGSizeMake(220, CGFLOAT_MAX)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:attributes
-                                              context:nil];
+    LvesStatusCellFrame *cellFrame=[[LvesStatusCellFrame alloc] init];
+    cellFrame.status=status;
     
-    //昵称的高度
-    CGFloat screenNameHight=[UIFont systemFontOfSize:13.f].lineHeight;
-    CGFloat cellHeight=screenNameHight+rect.size.height+10;
-    cellHeight=cellHeight<70?70:cellHeight;
-    
-    return cellHeight;
+    return cellFrame.cellHeight;
 }
 
 
