@@ -11,11 +11,12 @@
 #import "LvesStatus.h"
 #import "LvesUser.h"
 #import "UIImageView+WebCache.h"
+#import "LvesIconView.h"
 
 @interface LvesStatusCell ()
 {
     ///头像
-    UIImageView *_icon;
+    LvesIconView *_icon;
 
     ///昵称
     UILabel *_screenName;
@@ -64,7 +65,7 @@
 #pragma mark 添加自己本身的子控件
 -(void)addAllSubviews{
     // 1.头像
-    _icon = [[UIImageView alloc] init];
+    _icon = [[LvesIconView alloc] init];
     [self.contentView addSubview:_icon];
     
     // 2.昵称
@@ -119,8 +120,11 @@
     LvesStatus *s = statusCellFrame.status;
     
     // 1.头像
+    _icon.iconType=kIconTypeSmall; //先设置类型
     _icon.frame = statusCellFrame.iconFrame;
-    [_icon sd_setImageWithURL:[NSURL URLWithString:s.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"Icon.png"] options:SDWebImageRetryFailed | SDWebImageLowPriority];
+    _icon.user=s.user;  //在设置用户
+    
+//    [_icon sd_setImageWithURL:[NSURL URLWithString:s.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"timeline_image_loading.png"] options:SDWebImageRetryFailed | SDWebImageLowPriority];
     
     // 2.昵称
     _screenName.frame = statusCellFrame.screenNameFrame;
@@ -145,7 +149,7 @@
         //        MyLog(@"pic---%@", s.picUrls);
         NSString *imageStr = s.picUrls[0][@"thumbnail_pic"];
         NSURL *imageURL = [NSURL URLWithString:imageStr];
-        [_image sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Icon.png"] options:SDWebImageLowPriority | SDWebImageRetryFailed];
+        [_image sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"timeline_image_loading.pngjm"] options:SDWebImageLowPriority | SDWebImageRetryFailed];
         //#warning 配图的图片
     } else {
         _image.hidden = YES;

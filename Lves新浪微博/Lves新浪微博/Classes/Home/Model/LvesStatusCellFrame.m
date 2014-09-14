@@ -9,7 +9,7 @@
 #import "LvesStatusCellFrame.h"
 #import "LvesStatus.h"
 #import "LvesUser.h"
-
+#import "LvesIconView.h"
 
 @implementation LvesStatusCellFrame
 
@@ -22,7 +22,8 @@
     //1.头像
     CGFloat iconX=kCellBorderWidth;
     CGFloat iconY=kCellBorderWidth;
-    _iconFrame=CGRectMake(iconX,iconY, 50, 50);
+    CGSize iconSize=[LvesIconView iconSizeWithType:kIconTypeSmall]; //根据头型类型获得大小
+    _iconFrame=CGRectMake(iconX,iconY, iconSize.width,iconSize.height);
     //2.昵称
     CGFloat screenNameX=CGRectGetMaxX(_iconFrame)+kCellBorderWidth;
     CGFloat scrrenNameY=iconY;
@@ -46,7 +47,8 @@
     
     //5. 微博内容
     CGFloat textX=iconX;
-    CGFloat textY=CGRectGetMaxY(_sourceFrame)+kCellBorderWidth;
+    CGFloat maxTextY=MAX(CGRectGetMaxY(_sourceFrame), CGRectGetMaxY(_iconFrame));
+    CGFloat textY=maxTextY+kCellBorderWidth;
     NSDictionary *textAttributes = @{NSFontAttributeName: kTextFont};
     CGRect textRect = [status.text boundingRectWithSize:CGSizeMake(cellWidth-2*kCellBorderWidth, CGFLOAT_MAX)
                                      options:NSStringDrawingUsesLineFragmentOrigin

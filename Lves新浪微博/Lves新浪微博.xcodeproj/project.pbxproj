@@ -15,6 +15,7 @@
 		5E47B49E195A62B00018FE2F /* LvesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B49D195A62B00018FE2F /* LvesNavigationController.m */; };
 		5E47B4A5195A706F0018FE2F /* LvesDockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B4A4195A706F0018FE2F /* LvesDockController.m */; };
 		5E50A0D21961494D00346292 /* More.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E50A0D11961494D00346292 /* More.plist */; };
+		5E520ED119A99B8D00113A31 /* LvesIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E520ED019A99B8D00113A31 /* LvesIconView.m */; };
 		5E6AF0781959459B00271694 /* LvesHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF0771959459B00271694 /* LvesHomeController.m */; };
 		5E6AF07D195945E400271694 /* LvesMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07C195945E400271694 /* LvesMoreController.m */; };
 		5E6AF08019594CD600271694 /* LvesMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AF07F19594CD600271694 /* LvesMainController.m */; };
@@ -338,6 +339,8 @@
 		5E47B4A3195A706F0018FE2F /* LvesDockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesDockController.h; sourceTree = "<group>"; };
 		5E47B4A4195A706F0018FE2F /* LvesDockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesDockController.m; sourceTree = "<group>"; };
 		5E50A0D11961494D00346292 /* More.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = More.plist; sourceTree = "<group>"; };
+		5E520ECF19A99B8D00113A31 /* LvesIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesIconView.h; sourceTree = "<group>"; };
+		5E520ED019A99B8D00113A31 /* LvesIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesIconView.m; sourceTree = "<group>"; };
 		5E5DD4D2198D322100EF920C /* WeiBoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiBoConfig.h; sourceTree = "<group>"; };
 		5E6AF0761959459B00271694 /* LvesHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LvesHomeController.h; sourceTree = "<group>"; };
 		5E6AF0771959459B00271694 /* LvesHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LvesHomeController.m; sourceTree = "<group>"; };
@@ -730,6 +733,8 @@
 			children = (
 				5E1E3C411997BC2800F80EE2 /* LvesStatusCell.h */,
 				5E1E3C421997BC2800F80EE2 /* LvesStatusCell.m */,
+				5E520ECF19A99B8D00113A31 /* LvesIconView.h */,
+				5E520ED019A99B8D00113A31 /* LvesIconView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1535,6 +1540,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = com.wildcat;
 				TargetAttributes = {
+					5E8BC97119318DCE00B0D673 = {
+						DevelopmentTeam = E6R9AWCZU8;
+					};
 					5E8BC98C19318DCE00B0D673 = {
 						TestTargetID = 5E8BC97119318DCE00B0D673;
 					};
@@ -1862,6 +1870,7 @@
 				5EC28B4F1997177F00BD3165 /* UIImage+WebP.m in Sources */,
 				5EEA6ADF1959AC5F00B64C64 /* LvesMeController.m in Sources */,
 				5E8F741A199256B200F52965 /* LvesUser.m in Sources */,
+				5E520ED119A99B8D00113A31 /* LvesIconView.m in Sources */,
 				5EC28B4B1997177F00BD3165 /* SDWebImagePrefetcher.m in Sources */,
 				5EC28B4E1997177F00BD3165 /* UIImage+MultiFormat.m in Sources */,
 				5EC28B461997177F00BD3165 /* SDWebImageCompat.m in Sources */,
@@ -1990,6 +1999,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: JIANHUA WANG (39D3YAZ732)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lves新浪微博/Lves新浪微博-Prefix.pch";
 				INFOPLIST_FILE = "Lves新浪微博/Lves新浪微博-Info.plist";
@@ -2004,6 +2014,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: JIANHUA WANG (39D3YAZ732)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JIANHUA WANG (39D3YAZ732)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lves新浪微博/Lves新浪微博-Prefix.pch";
 				INFOPLIST_FILE = "Lves新浪微博/Lves新浪微博-Info.plist";

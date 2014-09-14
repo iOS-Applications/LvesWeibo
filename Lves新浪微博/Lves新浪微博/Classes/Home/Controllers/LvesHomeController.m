@@ -25,7 +25,7 @@
 
 
 @interface LvesHomeController (){
-    NSMutableArray *_statuses;//所有微博数据
+    NSMutableArray *_statusesFrame;//所有微博数据
 }
 
 @end
@@ -73,11 +73,19 @@
 }
 #pragma mark -加载微博数据
 -(void)loadStatusData{
-    _statuses=[NSMutableArray array];
+    _statusesFrame=[NSMutableArray array];
    
     [LvesStatusTool statusWithSuccess:^(NSArray *statuses) {
-        [_statuses addObjectsFromArray:statuses]; //添加微博数据
-        [self.tableView reloadData]; //加载数据
+        //1. 在拿到最新的微博数据的时候计算它的frame
+        for (LvesStatus *status in statuses) {
+            //创建frame
+            LvesStatusCellFrame *frame=[[LvesStatusCellFrame alloc] init];
+            frame.status=status; //设置status
+            //添加到数组中
+            [_statusesFrame addObject:frame];
+        }
+        //2。 加载数据
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         
     }];
@@ -112,8 +120,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return _statuses.count;
+    return _statusesFrame.count;
 }
+//当有新的cell出现在界面中时调用
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     LvesStatusCell *cell = [tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -121,28 +130,22 @@
         cell = [[LvesStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
-    LvesStatus *status=_statuses[indexPath.row];
-    
-    LvesStatusCellFrame *cellFrame=[[LvesStatusCellFrame alloc] init];
-    cellFrame.status=status;
-
-    cell.statusCellFrame=cellFrame;
+    LvesStatusCellFrame *statusFrame=_statusesFrame[indexPath.row];
+    //设置cell中子控件的frame和内容
+    cell.statusCellFrame=statusFrame;
     
    
     return cell;
 
 }
 
-#pragma mark 设置Cell的高度
-
+#pragma mark 设置Cell的高度  delegate方法
+//只调用一次 一次性调用所有 ，每次tableView刷新数据的时候会调用
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    //获得微博内容
-    LvesStatus *status=_statuses[indexPath.row];
-    LvesStatusCellFrame *cellFrame=[[LvesStatusCellFrame alloc] init];
-    cellFrame.status=status;
+  
     
-    return cellFrame.cellHeight;
+    return [_statusesFrame[indexPath.row] cellHeight];
 }
 
 
